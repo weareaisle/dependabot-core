@@ -6,7 +6,7 @@ source script/_common
 
 HELP=false
 REBUILD=false
-LOCAL_REPO_PATH_WITHOUT_OWNER_REPO=""
+LOCAL_REPO_PATH=""
 
 # Enable docker buildkit with inline cache builds
 export DOCKER_BUILDKIT=1
@@ -33,7 +33,7 @@ fi
 
 # Check if second argument exists and is not an option
 if [ -n "$2" ] && [[ ! "$2" =~ ^- ]]; then
-  LOCAL_REPO_PATH_WITHOUT_OWNER_REPO="$2"
+  LOCAL_REPO_PATH="$2"
   shift
 fi
 
@@ -269,7 +269,7 @@ docker run --rm -ti \
   -v "$(pwd)/updater/Gemfile:$CODE_DIR/dependabot-updater/Gemfile" \
   -v "$(pwd)/updater/lib:$CODE_DIR/dependabot-updater/lib" \
   -v "$(pwd)/updater/spec:$CODE_DIR/dependabot-updater/spec" \
-  -v $LOCAL_REPO_PATH_WITHOUT_OWNER_REPO:/home/dependabot/bin/tmp/ \
+  -v $LOCAL_REPO_PATH:/home/dependabot/bin/tmp/owner/repo \
   --name "$CONTAINER_NAME" \
   --env "LOCAL_GITHUB_ACCESS_TOKEN=$LOCAL_GITHUB_ACCESS_TOKEN" \
   --env "DEPENDABOT_TEST_ACCESS_TOKEN" \
