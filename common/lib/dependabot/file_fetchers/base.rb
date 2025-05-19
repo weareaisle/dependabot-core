@@ -811,7 +811,7 @@ module Dependabot
             #checkit # dont understand why itis executed multiple times...
             SharedHelpers.run_shell_command(
               <<~CMD
-              echo "haha"
+                echo "doing nothing" #git clone #{clone_options.string} #{source.url} #{path}
               CMD
             )
             puts "  ===clone_options: #{clone_options.string}"
