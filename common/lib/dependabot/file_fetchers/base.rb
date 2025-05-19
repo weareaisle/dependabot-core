@@ -797,7 +797,7 @@ module Dependabot
           begin
             SharedHelpers.run_shell_command(
               <<~CMD
-                git clone #{clone_options.string} #{source.url} #{path}
+                echo "doing nothing" #git clone #{clone_options.string} #{source.url} #{path}
               CMD
             )
 

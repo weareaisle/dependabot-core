@@ -477,8 +477,9 @@ begin
       if $options[:cache_steps].include?("files") && Dir.exist?($repo_contents_path)
         puts "=> reading cloned repo from #{$repo_contents_path}"
       else
-        puts "=> cloning into #{$repo_contents_path}"
-        FileUtils.rm_rf($repo_contents_path)
+        puts "skipping cloning"
+        #puts "=> cloning into #{$repo_contents_path}"
+        #FileUtils.rm_rf($repo_contents_path)
         fetcher.clone_repo_contents
       end
       if $options[:commit]
